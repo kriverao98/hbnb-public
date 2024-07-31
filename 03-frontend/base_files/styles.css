@@ -2,31 +2,165 @@
   This is a SAMPLE File to get you started. Follow the instructions on the project to complete the tasks. 
   You'll probably need to override some of theese styles.
 */
-
+:root {
+    --color-primary: #f5f5f5;
+    --color-header-pale-olive-bg: #e0e5b6;
+    --color-buttons-dark-olive-bg: #c0c693;
+    --color-footer-pale-olive-bg: #e0e5b6;
+    --text-color: #645853;
+    --hover-color: #799a9c;
+    --font-family-base: 'Open Sans', 'Roboto',  'Lato';
+    --font-family-title: 'Montserrat', 'Poppins', 'Merriweather';
+    --font-size-small: 1.2rem;
+    --font-size-medium: 1.6rem;
+    --font-size-large: 1.8rem;
+    --font-size-x-large: 2.3rem;
+    --font-size-xx-large: 4.8rem;
+    --font-weight-regular: 400;
+    --font-weight-bold: 700;
+    --line-height-small: 1.2;
+    --line-height-base: 1.5;
+    --line-height-big: 1.8;
+    --section-header-align: center;
+    --section-header-padding: 0;
+    --section-header-width:  100%;
+    --section-footer-align: center;
+    --section-footer-padding: 10px;
+    --section-footer-width: 100%;
+    --section-tagline-transform: uppercase;
+    --section-title-margin: 0;
+    --section-padding-place-cards: 10px;
+    --section-border-width: 1px;
+    --section-border-style-place-cards: solid;
+    --section-border-color-place-cards: #ddd;
+    --nav-item-font-family: var(--font-family-title);
+    --nav-item-font-weight: var(--font-weight-bold);
+    --nav-item-font-size: var(--font-size-medium);
+    --nav-item-letter-spacing: calc(0.04 * var(--root-element));
+    --nav-item-display: inline-block;
+    --nav-item-margin: calc(3 * var(--root-element)) 0 0 0;
+    --nav-item-link-hover: var(--hover-color);
+    --button-display: inline-block;
+    --button-padding: 1.5rem 3rem;
+    --button-border: 0.2rem solid var(--color-primary);
+    --button-color: var(--color-buttons-dark-olive);
+    --button-hover-color:var(--hover-color);
+    --button-text-decoration: none;
+    --button-font-size:var(--font-size-large);
+    --header-logo-position: relative;
+    --header-logo-link-display: inline-block;
+    --header-logo-link-position: absolute;
+    --header-logo-link-top: -1rem;
+    --header-logo-link-left:0;
+    --transition-duration: .3s;
+    --transition-cubic-bezier: cubic-bezier(0.17, 0.67, 0, 1.01);
+}
 * {
     box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+}
+
+html {
+    scroll-behavior: smooth;
+    font-size: 62.5%;
+    position: relative;
 }
 
 body {
-    background-color: #f4f4f4;
-    color: #333;
-}
-
-header {
-    background-color: #333;
-    color: #fff;
-    padding: 1rem;
-}
-
-nav a {
-    color: #fff;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    min-height: var(--line-height-base);
     text-decoration: none;
-    margin-left: 1rem;
+    background-color:var(--color-primary);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
-
 main {
     padding: 2rem;
+    width: 100%;
+}
+
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-family-title);
+    font-weight: var(--font-weight-bold);
+}
+
+button:hover {
+    border: var(--button-border);
+    background-color: var(--button-hover-color);
+    text-decoration: var(--button-text-decoration);
+}
+
+.header {
+    background-color: var(--color-header-pale-olive-bg);
+    padding: var(--section-header-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: var(--section-header-width);
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.footer {
+    position: fixed;    
+    margin: 0px;
+    bottom: 0px;
+    padding: var(--section-footer-padding);
+    background-color:var(--color-footer-pale-olive-bg);
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: var(--section-footer-width);
+    text-align: center;
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+}
+
+nav {
+    margin: 30px;
+    padding: 0;
+    text-decoration: none;
+}
+
+nav .login-link {
+    color: var(--text-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-family-title);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-regular);
+    text-decoration: none;
+    
+}
+
+nav .login-link:hover {
+    background-color: var(--button-hover-color);
+}
+
+nav .login-link:active {
+    background-color: var(--button-color);
+}
+
+nav .login-link:focus {
+    outline: none;
+    background-color: var(--button-color);
+}
+nav .logo {
+    padding: var(--header-logo-position);
+    margin: 30px;
+    background-image: url(images/logo.png);
+    background-size: contain;
+    background-position: center;
 }
