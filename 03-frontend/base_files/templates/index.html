@@ -18,7 +18,7 @@
         <nav class="nav-item">
             <ul>
                     <li><a href="{{ url_for('index') }}" id="index" class="index"></a></li>
-                    <li><a href="{{ url_for('login') }}" id="login-link" class="login-button">Login</a></li>
+                    <li><a href="{{ url_for('login') }}" id="login-link" class="button">Login</a></li>
             </ul>
 
         </nav>
@@ -35,27 +35,8 @@
         </section>
         <section id="places-list" class="places-list">
             <!-- List of places will be populated dynamically -->
-            <div class="place-card">
-                <h2>Beautiful Beach House</h2>
-                <p>Price per night: $150</p>
-                <p>Location: Los Angeles, United States</p>
-                <a href="{{ url_for('place') }}" class="details-button" >View Details</a>
-            </div>
-            <div class="place-card">
-                <h2>Cozy Cabin</h2>
-                <p>Price per night: $100</p>
-                <p>Location: Toronto, Canada</p>
-                <a href="{{ url_for('place') }}" class="details-button">View Details</a>
-            </div>
-            <div class="place-card">
-                <h2>Modern Apartment</h2>
-                <p>Price per night: $200</p>
-                <p>Location: New York, United States</p>
-                <a href="{{ url_for('place') }}" class="details-button">View Details</a>
-            </div>
         </section>
     </main>
-    <script src="base_files/static/scripts.js"></script>
     <footer class="footer">
         <p>© 2024 HBnB Evolution. All rights reserved.</p>
     </footer>

@@ -44,7 +44,15 @@ def login():
 
 @app.route('/place', methods=['GET'])
 def place():
-    return render_template('place.html')
+    place_id = request.args.get('place_id')
+    if not place_id:
+        return "Place ID is required", 400
+    place = next((p for p in places if p['id'] == place_id), None)
+
+    if not place:
+        return "Place not found", 404
+
+    return render_template('place.html', place_id=place_id)
 
 @app.route('/places', methods=['GET'])
 def get_places():
