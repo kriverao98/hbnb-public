@@ -31,15 +31,13 @@ This function fetches the places API.
     if (!place_details) {
       throw new Error(`Place details could not be loaded.`);
     }
-    const displayCard = document.getElementsByClassName('place_card');
-    if (!displayCard) {
+    const displayCard = document.getElementsByClassName('places-card');
+    if (displayCard.length == 0) {
       throw new Error(`Display card is empty.`)
     }
-    else {
-      return displayCard
-    }
+    return displayCard
   }
-  catch {
+  catch (error) {
     console.error(`An error occurred:`, error.message);
   }
   }
@@ -48,32 +46,36 @@ This function fetches the places API.
     try {
       const place_details = await fetchPlaceDetails();
 
-      if (!place_details) {
-        throw new Error(`Place details could not be loaded.`);
+      if (!place_details || place_details.length == 0) {
+        throw new Error(`No place details available.`);
       }
-      else {
+
+      const cardsToShow = 3;
+      const placesList = document.getElementById('places-list');
+      placesList.innerHTML = '';
+
+      place_details.slice(0, cardsToShow).forEach(place => {
         const detailsDiv = document.createElement('div');
-        const base_files = "base_files/images"
         detailsDiv.setAttribute('class', 'place-card');
 
         detailsDiv.innerHTML = `
-        <img src="${base_files}/images" class="place-image-large"
-        alt="Large Place Image">
-        <div class="place-info">
-          <h3>${place_details.description}</h3>
-          <p>Price per night:${place_details.price_per_night}</p>
-          <p>Location:${place_details.city_name} + ${place_details.country_name}</P>
-        `;
-        document.body.appendChild(detailsDiv);
-      }
+          <div class="place-info">
+            <h3>${place.description}</h3>
+            <p>Price per night: $${place.price_per_night}</p>
+            <p>Location:${place.city_name}, ${place_details.country_name}</p>
+            <a href="/place/${place.id}" class="details-button">View Details</a>
+          </div>
+            `;
+        placesList.appendChild(detailsDiv);
+      });
     }
-    catch {
+    catch (error) {
       console.error('An error occurred', error.message);
     }
   };
 
 document.addEventListener('DOMContentLoaded', () => {
-  fetchPlace_details();
+  fetchPlaceDetails();
   cardsDisplay();
-  populateHost();
+  populatePlaceCard();
 });

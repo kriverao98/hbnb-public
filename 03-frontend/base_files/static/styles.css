@@ -41,7 +41,7 @@
     --nav-item-margin: calc(3 * var(--root-element)) 0 0 0;
     --nav-item-link-hover: var(--hover-color);
     --button-display: inline-block;
-    --button-padding: 1.5rem 3rem;
+    --button-padding: 10px 20px;
     --button-border: 0.2rem solid var(--color-primary);
     --button-color: var(--color-buttons-dark-olive);
     --button-hover-color:var(--hover-color);
@@ -93,6 +93,41 @@ h1, h2, h3 {
     font-weight: var(--font-weight-bold);
 }
 
+.places-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 0;
+}
+
+.places-card {
+    flex: 1 1 calc(33.333% - 20px);
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    text-align: center;
+    background-color: var(--color-primary);
+    padding: 16px;
+    margin: 0;
+}
+
+.places-card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.details-button {
+    display: inline-block;
+    padding: var(--button-padding);
+    margin-top: 10px;
+    color: var(--text-color);
+    background-color: var(--button-color);
+    border: none;
+    border-radius: 5px;
+    text-decoration: var(--button-text-decoration);
+    text-align: center;
+}
 button:hover {
     border: var(--button-border);
     background-color: var(--button-hover-color);

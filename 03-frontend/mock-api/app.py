@@ -1,10 +1,15 @@
-from flask import Flask, request, jsonify
+from flask import Flask, render_template, request, jsonify
 from flask_jwt_extended import JWTManager, create_access_token, jwt_required, get_jwt_identity
 from flask_cors import CORS
 import json
 from uuid import uuid4
+import os
 
-app = Flask(__name__)
+BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+TEMPLATE_DIR = os.path.join(BASE_DIR, '..', 'base_files', 'templates')
+STATIC_DIR = os.path.join(BASE_DIR, '..', 'base_files', 'static')
+
+app = Flask(__name__, template_folder=TEMPLATE_DIR, static_folder=STATIC_DIR)
 app.config.from_object('config.Config')
 
 CORS(app, resources={r"/*": {"origins": "*"}})
@@ -19,7 +24,11 @@ with open('data/places.json') as f:
 # In-memory storage for new reviews
 new_reviews = []
 
-@app.route('/login', methods=['POST'])
+@app.route('/', methods=['GET'])
+def index():
+    return render_template('index.html')
+
+@app.route('/login', methods=['GET','POST'])
 def login():
     email = request.json.get('email')
     password = request.json.get('password')
@@ -32,6 +41,10 @@ def login():
 
     access_token = create_access_token(identity=user['id'])
     return jsonify(access_token=access_token)
+
+@app.route('/place', methods=['GET'])
+def place():
+    return render_template('place.html')
 
 @app.route('/places', methods=['GET'])
 def get_places():

@@ -6,19 +6,20 @@
     <title>List of Places</title>
     <link rel="icon" type="image/png" href="/images/icon.png">
     <link rel="stylesheet" href="https://unpkg.com/normalize.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </head>
 <body>
     <!--Header-->
     <header class="header">
-        <a href="index.html" class="logo">
-            <img src="images/logo.png" alt="HBNB logo">
+        <a href="{{ url_for('index') }}" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="HBNB logo" alt="HBNB logo">
         </a>
         <!--Nav Bar-->
         <nav class="nav-item">
             <ul>
-                    <li><a href="index.html" id="index" button class="index"></a></li>
-                    <li><a href="login.html" id="login-link" button class="login-button">Login</a></li>
+                    <li><a href="{{ url_for('index') }}" id="index" class="index"></a></li>
+                    <li><a href="{{ url_for('login') }}" id="login-link" class="login-button">Login</a></li>
             </ul>
 
         </nav>
@@ -33,29 +34,26 @@
         <section id="places-list">
             <!-- List of places will be populated dynamically -->
             <div class="places-card">
-                <img src="images/" alt="Place 1" class="place-image">
-                <h2>{description}</h2>
+                <h2>Beautiful Beach House</h2>
                 <p>Price per night: $150</p>
                 <p>Location: Los Angeles, United States</p>
-                <button href="place.html" class="details-button" >View Details></button>
+                <a href="{{ url_for('place') }}" class="details-button" >View Details</a>
             </div>
             <div class="places-card">
-                <img src="images/" alt="Place 2" class="place-image">
                 <h2>Cozy Cabin</h2>
                 <p>Price per night: $100</p>
                 <p>Location: Toronto, Canada</p>
-                <button class="details-button">View Details</button>
+                <a href="{{ url_for('place') }}" class="details-button">View Details</a>
             </div>
             <div class="places-card">
-                <img src="images/" alt="Place 3" class="place-image">
                 <h2>Modern Apartment</h2>
                 <p>Price per night: $200</p>
                 <p>Location: New York, United States</p>
-                <button class="details-button">View Details</button>
+                <a href="{{ url_for('place') }}" class="details-button">View Details</a>
             </div>
         </section>
     </main>
-    <script src="scripts.js"></script>
+    <script src="base_files/static/scripts.js"></script>
     <footer class="footer">
         <p>© 2024 HBnB Evolution. All rights reserved.</p>
     </footer>
