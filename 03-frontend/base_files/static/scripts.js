@@ -60,7 +60,7 @@ This function fetches the places API.
 
         detailsDiv.innerHTML = `
           <div class="place-info">
-            <h3>${place.description}</h3>
+            <h2>${place.description}</h2>
             <p>Price per night: $${place.price_per_night}</p>
             <p>Location:${place.city_name}, ${place_details.country_name}</p>
             <a href="/place/${place.id}" class="details-button">View Details</a>
