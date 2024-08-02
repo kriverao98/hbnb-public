@@ -102,7 +102,7 @@ body {
 }
 
 .footer {
-    position: relative; /* Change this from fixed to relative */
+    position: relative;
     margin: 0;
     padding: var(--section-footer-padding);
     background-color: var(--color-footer-pale-olive-bg);
@@ -171,7 +171,7 @@ nav .login-button:focus {
     background-color: var(--button-color);
 }
 
-/* Place Cards */
+/* Place Cards*/
 #places-list {
     display: flex;
     flex-wrap: nowrap;
@@ -185,7 +185,7 @@ nav .login-button:focus {
     width: 350px;
     height: 300px;
     margin: 20px;
-    padding: 10px;
+    padding:10px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -195,6 +195,7 @@ nav .login-button:focus {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-align: center;
 }
 
 .place-card h2 {
@@ -209,7 +210,6 @@ nav .login-button:focus {
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-regular);
 }
-
 .place-card:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
@@ -236,7 +236,6 @@ nav .login-button:focus {
     text-decoration: var(--button-text-decoration);
     text-align: center;
 }
-
 .details-button:hover {
     border: var(--button-border);
     background-color: var(--button-hover-color);
