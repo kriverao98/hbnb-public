@@ -11,6 +11,8 @@ html {
     scroll-behavior: smooth;
     font-size: 62.5%;
     position: relative;
+    height: 100%;
+    margin: 0;
 }
 
 body {
@@ -24,6 +26,7 @@ body {
     margin: 0;
     padding: 0;
     width: 100%;
+    height: 100%;
 }
 
 /* Custom properties */
@@ -127,13 +130,19 @@ nav {
 nav .logo {
     padding: 10px;
     margin: 0 20px;
-    background-image: url(images/logo.png);
     background-size: contain;
     background-position: center;
     width: 100px;
     height: 50px;
     background-repeat: no-repeat;
     display: flex;
+}
+
+nav .logo img {
+    width: auto;
+    height: 60px;
+    margin-bottom: 20px;
+    object-fit: contain;
 }
 
 nav .login-button {
@@ -168,8 +177,9 @@ nav .login-button:focus {
 /* Place Cards*/
 #places-list {
     display: flex;
-    flex-wrap:wrap;
+    flex-wrap: nowrap;
     justify-content: space-around;
+    overflow-x: auto;
     gap: 20px;
     padding: 0;
 }
@@ -207,6 +217,16 @@ nav .login-button:focus {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
+.horizontal-scroll {
+    overflow-x: auto;
+    white-space: nowrap;
+    max-width: 100%;
+}
+
+.horizontal-scroll .place-card {
+    display: inline-block;
+    vertical-align: top;
+}
 
 .details-button {
     display: inline-block;
@@ -223,6 +243,62 @@ nav .login-button:focus {
     border: var(--button-border);
     background-color: var(--button-hover-color);
 }
+
+/* Place.html */
+
+#place-details {
+    display: flex;
+    flex-wrap:wrap;
+    justify-content: space-around;
+    gap: 20px;
+    padding: 0;
+}
+
+/* Login Container*/
+#login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+/* LogIn Form */
+#login-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    padding: 20px;
+    margin-bottom: 50px;
+    background-color: var(--color-header-pale-olive-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+}
+
+#login-form label,
+#login-form input {
+    width: 100%;
+    height: 40px;
+    margin-bottom: 10px;
+    padding: 0;
+    padding-top: 20px;
+}
+
+#login-form button {
+    margin-top: 10px;
+    background-color: var(--color-buttons-dark-olive-bg);
+    width: 100%;
+    height: 40px;
+    border-radius: 40px;
+    color: var(--text-color);
+    border: none;
+}
+
 
 /* Other */
 main {

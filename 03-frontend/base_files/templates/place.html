@@ -8,6 +8,19 @@
     <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </head>
 <body>
+    <!--Header-->
+    <header class="header">
+        <a href="{{ url_for('index') }}" class="logo">
+            <img src="{{ url_for('static', filename='images/logo.png') }}" alt="HBNB logo" alt="HBNB logo">
+        </a>
+        <!--Nav Bar-->
+        <nav class="nav-item">
+            <ul>
+                <li><a href="{{ url_for('index') }}" id="index" class="index"></a></li>
+                <li><a href="{{ url_for('login') }}" id="login-link" class="button">Login</a></li>
+            </ul>
+        </nav>
+    </header>
     <main>
         <section id="place-details">
             <!-- Place details will be populated dynamically -->
@@ -23,6 +36,7 @@
         </section>
         <section id="reviews">
             <!-- Reviews will be populated dynamically -->
+             <h1>Reviews</h1>
              <div class="review-card">
                 <!--Review cards, populated dynamically-->
              </div>
@@ -31,7 +45,6 @@
             <div class="add-review">
                 <!--Add review class, populated dynamically-->
             </div>
-            <h2>Add a Review</h2>
             <form id="review-form" class="form">
                 <label for="review-text">Review:</label>
                 <textarea id="review-text" name="review-text" required></textarea>
@@ -40,5 +53,8 @@
             </form>
         </section>
     </main>
+    <footer class="footer">
+        <p>© 2024 HBnB Evolution. All rights reserved.</p>
+    </footer>
 </body>
 </html>
