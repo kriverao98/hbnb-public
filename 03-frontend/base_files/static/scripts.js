@@ -1,4 +1,4 @@
-/* 
+/*
   This is a SAMPLE FILE to get you started.
   Please, follow the project instructions to complete the tasks.
 */
@@ -220,7 +220,6 @@ async function loginUser(email, password) {
       const data = await loginResponse.json();
       console.log('Login successful, data:', data);
       document.cookie = `token=${data.access_token}; path=/`;
-      window.location.href = '/';
     } else {
       const error = await loginResponse.text();
       console.log('Login failed response text:', error);
@@ -242,9 +241,6 @@ function getCookie(name) {
 function checkAuthentication() {
   // Check user
   const token = getCookie('token');
-  if (!token) {
-    window.location.href = '/';
-  }
   return token;
 }
 
@@ -275,35 +271,6 @@ function handleResponse(response) {
       document.getElementById('review-form').reset();  // Clear the form
   } else {
       alert('Failed to submit review');
-  }
-}
-
-function handleLogout(event) {
-  if (event) event.preventDefault();
-  document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
-
-  // Optionally update the UI to reflect the user is logged out
-  const loginButton = document.getElementById('login-link');
-  if (loginButton) {
-    loginButton.textContent = 'Login';
-    loginButton.removeEventListener('click', handleLogout);
-    loginButton.addEventListener('click', handleLogin);
-  }
-}
-
-async function handleLogin(event) {
-  event.preventDefault();
-
-  // Retrieve email and password from form inputs
-  const email = document.getElementById('email').value;
-  const password = document.getElementById('password').value;
-
-  try {
-    // Call loginUser function to handle login
-    await loginUser(email, password);
-  } catch (error) {
-    console.error('Login failed:', error);
-    alert('Login failed. Please try again.');
   }
 }
 
@@ -385,25 +352,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       // User is not logged in, hide the review form
       reviewForm.style.display = 'none';
     }
-  }
-  const loginButton = document.getElementById('login-link');
-  
-  if (loginButton) {
-    const checkToken = getCookie('token');
-
-    if (checkToken) {
-      // User is logged in
-      loginButton.textContent = 'Logout';
-      loginButton.removeEventListener('click', handleLogin);
-      loginButton.addEventListener('click', handleLogout);
-    } else {
-      // User is not logged in
-      loginButton.textContent = 'Login';
-      loginButton.removeEventListener('click', handleLogout);
-      loginButton.addEventListener('click', handleLogin);
-    }
-  } else {
-    console.error('Login button not found in the DOM.');
   }
 
   console.log('JavaScript file is loaded.');

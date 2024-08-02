@@ -152,25 +152,27 @@ nav .login-button {
     font-size: var(--font-size-x-large);
     font-weight: var(--font-weight-regular);
     text-decoration: none;
-    padding: 10px 20px;
+    padding: var(--button-padding);
     margin: 0 20px;
+    border: var(--button-border);
+    border-radius: 5px;
+    background-color: var(--color-buttons-dark-olive-bg);
 }
 
 nav .login-button:hover {
     background-color: var(--button-hover-color);
-    border-radius: 5px;
-    padding: 5px;
 }
 
 nav .login-button:active {
-    background-color: var(--button-color);
+    background-color: var(--button-hover-color);
 }
 
 nav .login-button:focus {
     outline: none;
-    background-color: var(--button-color);
+    background-color: var(--button-hover-color);
 }
 
+/* Place Cards */
 /* Place Cards*/
 #places-list {
     display: flex;
@@ -224,20 +226,29 @@ nav .login-button:focus {
     display: inline-block;
     vertical-align: top;
 }
-
 .details-button {
     display: inline-block;
     padding: var(--button-padding);
     margin-top: 10px;
     color: var(--text-color);
     background-color: var(--color-buttons-dark-olive-bg);
-    border: none;
+    border: var(--button-border);
     border-radius: 5px;
     text-decoration: var(--button-text-decoration);
     text-align: center;
 }
+
 .details-button:hover {
+    background-color: var(--button-hover-color);
     border: var(--button-border);
+}
+
+.details-button:active {
+    background-color: var(--button-hover-color);
+}
+
+.details-button:focus {
+    outline: none;
     background-color: var(--button-hover-color);
 }
 
@@ -290,13 +301,24 @@ nav .login-button:focus {
 }
 
 #login-form button {
-    margin-top: 10px;
+    display: inline-block;
+    padding: var(--button-padding);
+    margin: 10px 0;
+    color: #fff;
     background-color: var(--color-buttons-dark-olive-bg);
-    width: 100%;
-    height: 40px;
-    border-radius: 40px;
-    color: var(--text-color);
-    border: none;
+    border: var(--button-border);
+    border-radius: 5px;
+    text-decoration: var(--button-text-decoration);
+    text-align: center;
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-medium);
+    font-weight: var(--font-weight-bold);
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+#login-form button:hover {
+    background-color: var(--button-hover-color);
 }
 
 /* Place Details Page */
@@ -337,14 +359,6 @@ nav .login-button:focus {
     align-items: center;
     max-width: 1000px;
     width: 100%;
-}
-
-.place-details-content img {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    border-radius: 10px;
-    margin-bottom: 20px;
 }
 
 /* Reviews Section */
@@ -444,36 +458,15 @@ nav .login-button:focus {
 
 #review-form button {
     background-color: var(--color-buttons-dark-olive-bg);
-    padding: 10px 20px;
+    padding: var(--button-padding);
     color: #fff;
-    border: none;
+    border: var(--button-border);
     border-radius: 5px;
     cursor: pointer;
 }
 
 #review-form button:hover {
-    background-color: var(--hover-color);
-}
-
-.place-image-large {
-    width: 100%;
-    max-width: 1000px;
-    margin-bottom: 20px;
-}
-
-.place-image-large img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.place-card img.place-image {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 10px;
-    margin-bottom: 10px;
+    background-color: var(--button-hover-color);
 }
 
 .place-card .place-info {
