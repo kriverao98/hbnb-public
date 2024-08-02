@@ -183,11 +183,11 @@ nav .login-button:focus {
     padding: 0;
 }
 
-.place-card {
+.place-info {
     width: 350px;
     height: 300px;
-    margin: 20px;
-    padding:10px;
+    margin: 20px auto; /* Center the place cards */
+    padding: 60px;
     border: 1px solid #ddd;
     border-radius: 10px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
@@ -195,24 +195,28 @@ nav .login-button:focus {
     text-align: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-    text-align: center;
 }
 
-.place-card h2 {
+.place-info h2 {
     font-family: var(--font-family-title);
     font-size: var(--font-size-x-large);
     font-weight: var(--font-weight-bold);
     padding: 7px;
+    margin: 0;
+    margin-bottom: 5px;
 }
 
-.place-card p {
+.place-info p {
     font-family: var(--font-family-base);
     font-size: var(--font-size-small);
     font-weight: var(--font-weight-regular);
+    margin: 0;
+    padding: 0%;
 }
-.place-card:hover {
+
+.place-info:hover {
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
 }
 
@@ -226,7 +230,7 @@ nav .login-button:focus {
     display: inline-block;
     vertical-align: top;
 }
-.details-button {
+.button {
     display: inline-block;
     padding: var(--button-padding);
     margin-top: 10px;
@@ -238,16 +242,16 @@ nav .login-button:focus {
     text-align: center;
 }
 
-.details-button:hover {
+.button:hover {
     background-color: var(--button-hover-color);
     border: var(--button-border);
 }
 
-.details-button:active {
+.button:active {
     background-color: var(--button-hover-color);
 }
 
-.details-button:focus {
+.button:focus {
     outline: none;
     background-color: var(--button-hover-color);
 }
