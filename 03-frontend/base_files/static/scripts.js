@@ -239,6 +239,15 @@ function getCookie(name) {
   if (parts.length == 2) return parts.pop().split(';').shift();
 }
 
+function checkAuthentication() {
+  // Check user
+  const token = getCookie('token');
+  if (!token) {
+    window.location.href = '/';
+  }
+  return token;
+}
+
 async function submitReview(token, placeId, reviewText) {
   try {
       const response = await fetch(getApiUrl(`places/${placeId}/reviews`), {
@@ -266,6 +275,35 @@ function handleResponse(response) {
       document.getElementById('review-form').reset();  // Clear the form
   } else {
       alert('Failed to submit review');
+  }
+}
+
+function handleLogout(event) {
+  if (event) event.preventDefault();
+  document.cookie = 'token=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+
+  // Optionally update the UI to reflect the user is logged out
+  const loginButton = document.getElementById('login-link');
+  if (loginButton) {
+    loginButton.textContent = 'Login';
+    loginButton.removeEventListener('click', handleLogout);
+    loginButton.addEventListener('click', handleLogin);
+  }
+}
+
+async function handleLogin(event) {
+  event.preventDefault();
+
+  // Retrieve email and password from form inputs
+  const email = document.getElementById('email').value;
+  const password = document.getElementById('password').value;
+
+  try {
+    // Call loginUser function to handle login
+    await loginUser(email, password);
+  } catch (error) {
+    console.error('Login failed:', error);
+    alert('Login failed. Please try again.');
   }
 }
 
@@ -320,6 +358,52 @@ document.addEventListener('DOMContentLoaded', async () => {
       const password = document.getElementById('password').value;
       await loginUser(email, password);
     });
+  }
+
+  // Check authentication and handle review form visibility
+  const token = checkAuthentication();
+  const placeId = getPlaceIdFromURL();
+
+  // Hide or show review form based on authentication
+  const reviewForm = document.getElementById('review-form');
+  if (reviewForm) {
+    if (token) {
+      // User is logged in, show the review form
+      reviewForm.style.display = 'block';
+      reviewForm.addEventListener('submit', async (event) => {
+        event.preventDefault();  // Prevent the default form submission
+
+        const reviewText = document.getElementById('review-text').value;
+        if (reviewText.trim() === '') {
+          alert('Review text cannot be empty.');
+          return;
+        }
+
+        await submitReview(token, placeId, reviewText);
+      });
+    } else {
+      // User is not logged in, hide the review form
+      reviewForm.style.display = 'none';
+    }
+  }
+  const loginButton = document.getElementById('login-link');
+  
+  if (loginButton) {
+    const checkToken = getCookie('token');
+
+    if (checkToken) {
+      // User is logged in
+      loginButton.textContent = 'Logout';
+      loginButton.removeEventListener('click', handleLogin);
+      loginButton.addEventListener('click', handleLogout);
+    } else {
+      // User is not logged in
+      loginButton.textContent = 'Login';
+      loginButton.removeEventListener('click', handleLogout);
+      loginButton.addEventListener('click', handleLogin);
+    }
+  } else {
+    console.error('Login button not found in the DOM.');
   }
 
   console.log('JavaScript file is loaded.');
